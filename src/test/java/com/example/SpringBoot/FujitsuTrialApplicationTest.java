@@ -27,7 +27,7 @@ class FujitsuTrialApplicationTest {
         MvcResult result = mvc.perform(requestBuilder).andReturn();
         // Tallinn / Car -> BaseFee = 4.0
         // no extra fees for airTemp, windSpeed or phenomenon since vehicleType = car
-        assertEquals(4.0,Double.parseDouble(result.getResponse().getContentAsString()));
+        assertEquals(4.0, Double.parseDouble(result.getResponse().getContentAsString()));
 
         requestBuilder = MockMvcRequestBuilders.get("/%s/%s/%d".formatted("tallinn", "scooter", 1679332081));
         result = mvc.perform(requestBuilder).andReturn();
@@ -35,7 +35,7 @@ class FujitsuTrialApplicationTest {
         // rain -> phenomenonFee = 0.5
         // temp = 6.5 so no extra fee
         // wind = 2.3 so no extra fee
-        assertEquals(4.0,Double.parseDouble(result.getResponse().getContentAsString()));
+        assertEquals(4.0, Double.parseDouble(result.getResponse().getContentAsString()));
 
         requestBuilder = MockMvcRequestBuilders.get("/%s/%s/%d".formatted("tallinn", "bike", 1679332081));
         result = mvc.perform(requestBuilder).andReturn();
@@ -43,6 +43,6 @@ class FujitsuTrialApplicationTest {
         // rain -> phenomenonFee = 0.5
         // temp = 6.5 so no extra fee
         // wind = 2.3 so no extra fee
-        assertEquals(3.5,Double.parseDouble(result.getResponse().getContentAsString()));
+        assertEquals(3.5, Double.parseDouble(result.getResponse().getContentAsString()));
     }
 }
